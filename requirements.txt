@@ -1,0 +1,9 @@
+packages:
+colorama
+os
+sys
+termios
+tty
+signal
+
+for sound I used aplay and ran it from os.system
