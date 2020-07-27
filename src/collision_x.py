@@ -66,7 +66,7 @@ class Collision_horizontal(object):
             if mario.x + 2 >= coin.x and mario.x <= coin.x and \
                     (mario.y == coin.y or mario.y - 1 == coin.y):
                 mario.score += 50
-                os.system("aplay -q smb_coin.wav &")
+                os.system("aplay -q ../assets/smb_coin.wav &")
                 coins.pop(coins.index(coin))
                 coin.remove_coin(win)
                 del coin

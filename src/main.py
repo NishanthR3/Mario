@@ -48,12 +48,12 @@ class Engine(object):
         for coins in self.characters.coins:
             self.coins.append(Coins(*coins, self.win))
         self.mario = Mario_reddy((*self.characters.mario), self.win)
-        os.system("aplay -q smb_new.wav &")
+        os.system("aplay -q ../assets/smb_new.wav &")
         os.system("clear")
         self.win.update_frame(self.mario, self.lives,  0, 1)
 
     def __restart(self):
-        os.system("aplay -q smb_die.wav &")
+        os.system("aplay -q ../assets/smb_die.wav &")
         self.lives -= 1
         self.level = 1
         self.time = 0
@@ -91,11 +91,11 @@ class Engine(object):
 
     def __ground_move(self, input, bool_value_1, bool_value_2):
         if input == 'a' and not(bool_value_1):
-            os.system("aplay -q smb_touch.wav &")
+            os.system("aplay -q ../assets/smb_touch.wav &")
             self.mario.move(-1, self.win, self.level)
         elif input == 'd' and not(bool_value_2):
             os.system("clear")
-            os.system("aplay -q smb_touch.wav &")
+            os.system("aplay -q ../assets/smb_touch.wav &")
             self.mario.move(1, self.win, self.level)
         elif input == 'q':
             os.system('clear')
@@ -104,7 +104,7 @@ class Engine(object):
     def __jump_move(self, input, bool_value_1, bool_value_2):
         if not(self.mario.isJump):
             if input == 'w' and not(bool_value_1):
-                os.system("aplay -q smb_jump.wav &")
+                os.system("aplay -q ../assets/smb_jump.wav &")
                 self.mario.jump_init()
             elif input == 'w' and bool_value_1:
                 self.mario.remove_person(self.win)
@@ -161,7 +161,7 @@ class Engine(object):
             if self.done:
                 print(self.mario.x)
             if self.done and self.mario.x >= 227:
-                os.system('aplay -q smb_world_clear.wav &')
+                os.system('aplay -q ../assets/smb_world_clear.wav &')
                 os.system('clear')
                 print("You Won")
                 print("SCORE : " + str(round(self.mario.score)))
@@ -212,7 +212,7 @@ class Engine(object):
     def run_game(self):
         self.__intialize()
         self.__level_one_run()
-        os.system('aplay -q smb_gameover.wav &')
+        os.system('aplay -q ../assets/smb_gameover.wav &')
         os.system('clear')
         print("You Lost")
         sys.exit()
